@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Render, Subscribe, type Column, type TableViewModel } from 'svelte-headless-table';
+	import { Render, Subscribe, type TableViewModel } from 'svelte-headless-table';
 	import { mediaQuery } from 'svelte-legos';
 
 	import ArrowDownWideNarrow from 'lucide-svelte/icons/arrow-down-wide-narrow';
@@ -8,14 +8,16 @@
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 	import Search from 'lucide-svelte/icons/search';
 
-	import { onMount } from 'svelte';
-	import type { Readable } from 'svelte/store';
+	import type { Readable, Writable } from 'svelte/store';
 
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import * as Pagination from '$lib/components/ui/pagination';
-	import * as Popover from '$lib/components/ui/popover';
 	import * as Table from '$lib/components/ui/table';
+
+	import type { Filter } from '.';
+	import DataTableFilter from './data-table-faceted-filter.svelte';
+	import DataTableRangeFilter from './data-table-range-filter.svelte';
 
 	export let viewModel: TableViewModel<any, any>;
 
@@ -33,69 +35,22 @@
 
 	export let boldedColumns: string[] = [];
 
-	export let columns: Column[] = [];
+	export let filters: Filter[] = [];
 
 	const { headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates } = viewModel;
 	const { pageIndex } = pluginStates.pagination;
 	const { filterValue } = pluginStates.filter;
+
+	let filterValues: Writable<Record<string, any[]>> | undefined;
+	if (pluginStates.colFilter) {
+		filterValues = pluginStates.colFilter.filterValues;
+	}
 
 	const isDesktop = mediaQuery('(min-width: 768px)');
 
 	$: showBlur = loading || $total === 0;
 
 	let tableTop: HTMLDivElement;
-	let tableContainer: HTMLDivElement;
-	let isIntersecting = false;
-	let shouldStick = false;
-
-	// $: headerClass =
-	// 	showBlur || !shouldStick
-	// 		? ''
-	// 		: isIntersecting
-	// 			? 'md:top-0'
-	// 			: 'md:sticky md:top-[3.9rem] md:shadow';
-
-	let headerClass = '';
-
-	onMount(() => {
-		// Check if table is wider than its container
-		const checkTableWidth = () => {
-			if (tableContainer) {
-				const table = tableContainer.querySelector('table');
-				if (table) {
-					shouldStick = table.scrollWidth <= tableContainer.clientWidth;
-				}
-			}
-		};
-
-		// Initial check
-		checkTableWidth();
-
-		// Recheck on window resize
-		window.addEventListener('resize', checkTableWidth);
-
-		// Setup intersection observer only if we should stick
-		const observer = new IntersectionObserver(
-			([entry]) => {
-				isIntersecting = entry.isIntersecting;
-			},
-			{
-				threshold: 0,
-				rootMargin: '-64px 0px 0px 0px'
-			}
-		);
-
-		if (tableTop && shouldStick) {
-			observer.observe(tableTop);
-		}
-
-		return () => {
-			window.removeEventListener('resize', checkTableWidth);
-			if (tableTop) {
-				observer.unobserve(tableTop);
-			}
-		};
-	});
 </script>
 
 {#if enableSearch}
@@ -110,7 +65,35 @@
 			autocomplete="off"
 			maxlength={50}
 			bind:value={$filterValue}
+			disabled={loading}
 		/>
+	</div>
+{/if}
+
+{#if filters.length > 0 && $filterValues}
+	<div class="mt-4 flex flex-wrap gap-x-3 gap-y-2 md:items-center">
+		{#each filters as { title, column, options, initialValues }}
+			{#if options}
+				<DataTableFilter
+					bind:filterValues={$filterValues[column]}
+					{title}
+					{options}
+					{initialValues}
+					disabled={loading}
+				/>
+			{:else}
+				<DataTableRangeFilter
+					{...{
+						...{}
+						/* @ts-ignore */
+					}}
+					bind:filterValues={$filterValues[column]}
+					{title}
+					{initialValues}
+					disabled={loading}
+				/>
+			{/if}
+		{/each}
 	</div>
 {/if}
 
@@ -135,7 +118,6 @@
 	<div bind:this={tableTop} class="h-px w-full" />
 
 	<div
-		bind:this={tableContainer}
 		class="dark:bg-card mt-4 overflow-auto rounded-md border border-gray-300 bg-white shadow-sm dark:border-neutral-700/80"
 		class:select-none={showBlur}
 	>
@@ -143,7 +125,7 @@
 			<Table.Header class="w-[90rem]">
 				{#each $headerRows as headerRow}
 					<Subscribe rowAttrs={headerRow.attrs()}>
-						<Table.Row class="bg-muted hover:bg-muted dark:bg-neutral-700/40 {headerClass}">
+						<Table.Row class="bg-muted hover:bg-muted dark:bg-neutral-700/40">
 							{#each headerRow.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs let:props props={cell.props()}>
 									<Table.Head {...attrs}>
@@ -194,7 +176,7 @@
 												<Render of={cell.render()} />
 											</div>
 											<Button
-												class="ml-auto p-0 dark:hover:bg-transparent"
+												class="ml-auto p-0 dark:ring-neutral-400 dark:hover:bg-neutral-800 dark:hover:bg-transparent"
 												variant="ghost"
 												disabled={loading}
 												on:click={props.sort.toggle}
@@ -269,10 +251,16 @@
 
 					{#if page.type === 'ellipsis'}
 						<Pagination.Item>
-							<Pagination.Ellipsis />
+							<Pagination.Ellipsis class="dark:text-neutral-400" />
 						</Pagination.Item>
 					{:else}
-						<Pagination.Item isVisible={isCurrent}>
+						<Pagination.Item
+							{...{
+								...{}
+								/* @ts-ignore */
+							}}
+							isVisible={isCurrent}
+						>
 							<Pagination.Link
 								class="dark:data-[selected]:bg-card w-fit px-4 dark:border-neutral-700/80 dark:text-neutral-100 dark:hover:bg-neutral-800"
 								{page}

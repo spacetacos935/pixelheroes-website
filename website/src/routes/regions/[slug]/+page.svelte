@@ -1,4 +1,5 @@
 <script lang="ts">
+	import DataTable from '@/components/data-table/data-table.svelte';
 	import { createTable } from 'svelte-headless-table';
 	import {
 		addPagination,
@@ -16,7 +17,6 @@
 	import { convertServerId, debounce } from '$lib/utils';
 
 	import Alert from '$lib/components/alert.svelte';
-	import DataTable from '$lib/components/data-table.svelte';
 	import * as Card from '$lib/components/ui/card';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 
@@ -388,14 +388,14 @@
 >
 	<Tabs.List class="dark:bg-card grid h-11 w-full grid-cols-2">
 		<Tabs.Trigger
-			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:font-medium data-[state=active]:text-white dark:data-[state=active]:bg-neutral-100 dark:data-[state=active]:text-black"
+			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:font-medium data-[state=active]:text-white dark:ring-neutral-400 dark:data-[state=active]:bg-neutral-100 dark:data-[state=active]:text-black"
 			value="Clusters"
 			disabled={!initialLoad}
 		>
 			Clusters
 		</Tabs.Trigger>
 		<Tabs.Trigger
-			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:font-medium data-[state=active]:text-white dark:data-[state=active]:bg-neutral-100 dark:data-[state=active]:text-black"
+			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:font-medium data-[state=active]:text-white dark:ring-neutral-400 dark:data-[state=active]:bg-neutral-100 dark:data-[state=active]:text-black"
 			value="Servers"
 			disabled={!initialLoad}
 		>

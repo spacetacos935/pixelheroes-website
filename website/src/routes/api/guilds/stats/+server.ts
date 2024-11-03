@@ -31,10 +31,10 @@ export const GET: RequestHandler = async () => {
 	]);
 
 	if (totalRegionsError || topPowerError || topLevelError || topContributionsError) {
-		if (totalRegionsError) console.log(totalRegionsError);
-		if (topPowerError) console.log(topPowerError);
-		if (topLevelError) console.log(topLevelError);
-		if (topContributionsError) console.log(topContributionsError);
+		if (totalRegionsError) console.error(totalRegionsError);
+		if (topPowerError) console.error(topPowerError);
+		if (topLevelError) console.error(topLevelError);
+		if (topContributionsError) console.error(topContributionsError);
 
 		return json({ error: 'failed to query database' }, { status: 500 });
 	}

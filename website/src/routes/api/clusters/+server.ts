@@ -68,7 +68,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	]);
 
 	if (countError || fetchError) {
-		console.log(countError ?? fetchError);
+		console.error(countError ?? fetchError);
 		return json({ error: 'failed to query database' }, { status: 500 });
 	}
 

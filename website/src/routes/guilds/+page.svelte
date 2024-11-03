@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { createTable } from 'svelte-headless-table';
 	import {
+		addColumnFilters,
+		addHiddenColumns,
 		addPagination,
 		addSortBy,
 		addTableFilter,
@@ -8,14 +10,14 @@
 	} from 'svelte-headless-table/plugins';
 
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte/store';
+	import { writable, type Writable } from 'svelte/store';
 
 	import { title as titleStore } from '$lib/stores';
 	import type { Views } from '$lib/supabase';
 	import { convertServerId, debounce } from '$lib/utils';
 
 	import Alert from '$lib/components/alert.svelte';
-	import DataTable from '$lib/components/data-table.svelte';
+	import { DataTable, type Filter } from '$lib/components/data-table';
 	import * as Card from '$lib/components/ui/card';
 
 	titleStore.set('Guilds');
@@ -43,10 +45,14 @@
 	const defaultSortyKeys: SortKey[] = [{ id: 'globalPowerRank', order: 'asc' }];
 
 	const table = createTable(guilds, {
+		hide: addHiddenColumns({
+			initialHiddenColumnIds: ['region']
+		}),
 		filter: addTableFilter({
 			fn: ({ filterValue, value }) => value.toLowerCase().includes(filterValue.toLowerCase()),
 			serverSide: true
 		}),
+		colFilter: addColumnFilters({ serverSide: true }),
 		pagination: addPagination({
 			serverItemCount: total,
 			serverSide: true,
@@ -62,6 +68,10 @@
 	});
 
 	const columns = table.createColumns([
+		table.column({
+			accessor: 'region',
+			header: 'region'
+		}),
 		table.column({
 			accessor: 'globalPowerRank',
 			header: 'Global Rank',
@@ -112,6 +122,9 @@
 	const { pageIndex } = pluginStates.pagination;
 	const { sortKeys } = pluginStates.sort;
 	const { filterValue } = pluginStates.filter;
+	const { filterValues } = pluginStates.colFilter as {
+		filterValues: Writable<Record<string, any[]>>;
+	};
 
 	let loading = true;
 	let initialLoad = false;
@@ -130,6 +143,13 @@
 
 		if ($filterValue) {
 			params.append('query', $filterValue);
+		}
+
+		const filter = Object.fromEntries(
+			Object.entries($filterValues).filter(([, value]) => value.length > 0)
+		);
+		if (Object.keys(filter).length > 0) {
+			params.append('filters', JSON.stringify(filter));
 		}
 
 		const resp = await fetch(`/api/guilds?${params.toString()}`);
@@ -163,6 +183,31 @@
 		stats = json.stats;
 	}
 
+	let filters: Filter[] = [
+		{
+			title: 'Region',
+			column: 'region',
+			options: [
+				{ label: 'North America', value: 'NA', count: 0 },
+				{ label: 'Europe', value: 'EU', count: 0 }
+			],
+			initialValues: ['NA', 'EU']
+		},
+		{ title: 'Server', column: 'serverId', options: [] },
+		{ title: 'Level', column: 'level' },
+		{ title: 'Experience', column: 'experience' },
+		{ title: 'Power', column: 'power' },
+		{ title: 'Members', column: 'totalMembers' },
+		{ title: 'Contributions', column: 'contributions' }
+	];
+
+	async function fetchFilters() {
+		const resp = await fetch('/api/guilds/filters');
+		const json = await resp.json();
+		filters[0].options = json.filters.region;
+		filters[1].options = json.filters.serverId;
+	}
+
 	let debounced = debounce(fetchGuilds, 300);
 
 	let tableContainer: HTMLDivElement;
@@ -174,7 +219,8 @@
 
 	onMount(() => {
 		fetchStats();
-		fetchGuilds();
+		fetchFilters();
+		debounced();
 
 		const subscriptions = [
 			pageIndex.subscribe(() => {
@@ -182,6 +228,14 @@
 				debounced();
 			}),
 			filterValue.subscribe(() => {
+				$pageIndex = 1;
+				$sortKeys = defaultSortyKeys;
+				initialLoad = false;
+
+				debouncedScroll();
+				debounced();
+			}),
+			filterValues.subscribe(() => {
 				$pageIndex = 1;
 				$sortKeys = defaultSortyKeys;
 				initialLoad = false;
@@ -326,6 +380,7 @@
 		enableSearch={true}
 		boldedColumns={['name']}
 		perPage={20}
-		searchPlaceholder="Search for a guild name or description"
+		searchPlaceholder="Filter player or guild name"
+		{filters}
 	/>
 </div>
