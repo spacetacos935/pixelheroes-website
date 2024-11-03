@@ -1,0 +1,330 @@
+<script lang="ts">
+	import { createTable } from 'svelte-headless-table';
+	import {
+		addPagination,
+		addSortBy,
+		addTableFilter,
+		type SortKey
+	} from 'svelte-headless-table/plugins';
+
+	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+
+	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
+
+	import { title as titleStore } from '$lib/stores';
+	import type { Views } from '$lib/supabase';
+	import { convertServerId, debounce } from '$lib/utils';
+
+	import DataTable from '$lib/components/data-table.svelte';
+	import * as Alert from '$lib/components/ui/alert';
+	import * as Card from '$lib/components/ui/card';
+
+	titleStore.set('Guilds');
+
+	type Guild = Views<'guild_rankings'>;
+
+	const defaultGuilds: Guild[] = Array(6)
+		.fill(null)
+		.map(() => ({
+			globalPowerRank: 0,
+			serverId: 0,
+			name: '',
+			notice: '',
+			level: 0,
+			experience: BigInt(0),
+			power: BigInt(0),
+			totalMembers: 0,
+			contributions: BigInt(0),
+			globalContributionRank: 0
+		})) as unknown as Guild[];
+
+	let guilds = writable<Guild[]>(defaultGuilds);
+	let total = writable(0);
+
+	const defaultSortyKeys: SortKey[] = [{ id: 'globalPowerRank', order: 'asc' }];
+
+	const table = createTable(guilds, {
+		filter: addTableFilter({
+			fn: ({ filterValue, value }) => value.toLowerCase().includes(filterValue.toLowerCase()),
+			serverSide: true
+		}),
+		pagination: addPagination({
+			serverItemCount: total,
+			serverSide: true,
+			initialPageSize: 20,
+			initialPageIndex: 1
+		}),
+		sort: addSortBy({
+			disableMultiSort: true,
+			serverSide: true,
+			initialSortKeys: defaultSortyKeys,
+			toggleOrder: ['asc', 'desc']
+		})
+	});
+
+	const columns = table.createColumns([
+		table.column({
+			accessor: 'globalPowerRank',
+			header: 'Global Rank',
+			cell: ({ value }) => value.toLocaleString('en-US')
+		}),
+		table.column({
+			id: 'serverId',
+			header: 'Server',
+			accessor: ({ region, serverId }) => `${region}-${convertServerId(region, serverId)}`
+		}),
+		table.column({
+			accessor: 'name',
+			header: 'Name'
+		}),
+		table.column({
+			accessor: 'notice',
+			header: 'Description',
+			cell: ({ value }) => value || 'No description'
+		}),
+		table.column({
+			accessor: 'level',
+			header: 'Level'
+		}),
+		table.column({
+			accessor: 'experience',
+			header: 'Experience',
+			cell: ({ value }) => value.toLocaleString('en-US')
+		}),
+		table.column({
+			accessor: 'power',
+			header: 'Power',
+			cell: ({ value }) => value.toLocaleString('en-US')
+		}),
+		table.column({
+			accessor: 'totalMembers',
+			header: 'Members'
+		}),
+		table.column({
+			id: 'contributions',
+			header: 'Contributions',
+			accessor: ({ contributions, globalContributionRank }) =>
+				`${contributions.toLocaleString('en-US')}  (#${globalContributionRank})`
+		})
+	]);
+
+	const viewModel = table.createViewModel(columns);
+	const { pluginStates } = viewModel;
+	const { pageIndex } = pluginStates.pagination;
+	const { sortKeys } = pluginStates.sort;
+	const { filterValue } = pluginStates.filter;
+
+	let loading = true;
+	let initialLoad = false;
+
+	async function fetchGuilds() {
+		loading = true;
+
+		const startTime = Date.now();
+		const minLoadTime = 500;
+
+		const params = new URLSearchParams({
+			page: $pageIndex.toString(),
+			sortBy: $sortKeys.length > 0 ? $sortKeys[0].id : defaultSortyKeys[0].id,
+			sortDir: $sortKeys.length > 0 ? $sortKeys[0].order : defaultSortyKeys[0].order
+		});
+
+		if ($filterValue) {
+			params.append('query', $filterValue);
+		}
+
+		const resp = await fetch(`/api/guilds?${params.toString()}`);
+		const { total, guilds }: { total: number; guilds: Guild[] } = await resp.json();
+
+		$total = total;
+		$guilds = $total > 0 ? guilds : defaultGuilds;
+
+		const elapsedTime = Date.now() - startTime;
+		const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+
+		if (remainingTime > 0) {
+			await new Promise((resolve) => setTimeout(resolve, remainingTime));
+		}
+
+		initialLoad = true;
+		loading = false;
+	}
+
+	let stats: {
+		total?: number;
+		totalRegions?: { count: number; region: string }[];
+		topPower?: Guild;
+		topLevel?: Guild;
+		topContributions?: Guild;
+	} = {};
+
+	async function fetchStats() {
+		const resp = await fetch('/api/guilds/stats');
+		const json = await resp.json();
+		stats = json.stats;
+	}
+
+	let debounced = debounce(fetchGuilds, 300);
+
+	let tableContainer: HTMLDivElement;
+	let debouncedScroll = debounce(() => {
+		if (window.scrollY > tableContainer.getBoundingClientRect().top + window.scrollY) {
+			tableContainer.scrollIntoView();
+		}
+	}, 300);
+
+	onMount(() => {
+		fetchStats();
+		fetchGuilds();
+
+		const subscriptions = [
+			pageIndex.subscribe(() => {
+				debouncedScroll();
+				debounced();
+			}),
+			filterValue.subscribe(() => {
+				$pageIndex = 1;
+				$sortKeys = defaultSortyKeys;
+				initialLoad = false;
+
+				debouncedScroll();
+				debounced();
+			}),
+			sortKeys.subscribe(() => {
+				$pageIndex = 1;
+
+				debouncedScroll();
+				debounced();
+			})
+		];
+
+		return () => {
+			subscriptions.forEach((unsub) => unsub());
+		};
+	});
+</script>
+
+<div>
+	<h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900">🏰 Guilds</h1>
+	<p class="text-muted-foreground mt-1 max-w-4xl text-base">
+		A list of all guilds and their members. This data is updated every day at reset.
+	</p>
+
+	<Alert.Root class="my-8 border-blue-200 bg-blue-100">
+		<CircleAlert class="h-4 w-4 !text-blue-800" />
+		<Alert.Title class="font-semibold tracking-normal text-blue-700">
+			Limited Data Available
+		</Alert.Title>
+		<Alert.Description class="text-blue-700">
+			This data currently only includes North America and Europe. SEA will be added in the future.
+		</Alert.Description>
+	</Alert.Root>
+</div>
+
+<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+	<Card.Root class="border-gray-300">
+		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
+			<Card.Title class="text-primary text-base font-medium">Total Guilds</Card.Title>
+		</Card.Header>
+		<Card.Content class="p-4 pt-0">
+			{#if stats.total && stats.totalRegions}
+				<div class="text-2xl font-bold">
+					{stats.total.toLocaleString('en-US')} Guilds
+				</div>
+				<p class="text-muted-foreground mt-1 text-sm font-medium">
+					{#each stats.totalRegions as item, index}
+						{#if index > 0}
+							&nbsp;&#x2022;
+						{/if}
+						{item.region}: {item.count.toLocaleString('en-US')}
+					{/each}
+				</p>
+			{:else}
+				<div class="animate-pulse">
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+				</div>
+			{/if}
+		</Card.Content>
+	</Card.Root>
+	<Card.Root class="border-gray-300">
+		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
+			<Card.Title class="text-base font-medium text-purple-500">Most Active</Card.Title>
+		</Card.Header>
+		<Card.Content class="p-4 pt-0">
+			{#if stats.topContributions}
+				<div class="text-2xl font-bold">
+					{stats.topContributions.region}-{convertServerId(
+						stats.topContributions.region,
+						stats.topContributions.serverId
+					)}
+					{stats.topContributions.name}
+				</div>
+				<p class="text-muted-foreground mt-1 text-sm font-medium">
+					Contributions: {stats.topContributions.contributions.toLocaleString('en-US')}
+				</p>
+			{:else}
+				<div class="animate-pulse">
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+				</div>
+			{/if}
+		</Card.Content>
+	</Card.Root>
+	<Card.Root class="border-gray-300">
+		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
+			<Card.Title class="text-base font-medium text-red-500">Most Powerful</Card.Title>
+		</Card.Header>
+		<Card.Content class="p-4 pt-0">
+			{#if stats.topPower}
+				<div class="text-2xl font-bold">
+					{stats.topPower.region}-{convertServerId(stats.topPower.region, stats.topPower.serverId)}
+					{stats.topPower.name}
+				</div>
+				<p class="text-muted-foreground mt-1 text-sm font-medium">
+					Power: {stats.topPower.power.toLocaleString('en-US')}
+				</p>
+			{:else}
+				<div class="animate-pulse">
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+				</div>
+			{/if}
+		</Card.Content>
+	</Card.Root>
+	<Card.Root class="border-gray-300">
+		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
+			<Card.Title class="text-base font-medium text-green-600">Highest Level</Card.Title>
+		</Card.Header>
+		<Card.Content class="p-4 pt-0">
+			{#if stats.topLevel}
+				<div class="text-2xl font-bold">
+					{stats.topLevel.region}-{convertServerId(stats.topLevel.region, stats.topLevel.serverId)}
+					{stats.topLevel.name}
+				</div>
+				<p class="text-muted-foreground mt-1 text-sm font-medium">
+					Level: {stats.topLevel.level.toLocaleString('en-US')}
+				</p>
+			{:else}
+				<div class="animate-pulse">
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+				</div>
+			{/if}
+		</Card.Content>
+	</Card.Root>
+</div>
+
+<div class="scroll-mt-32" bind:this={tableContainer}>
+	<DataTable
+		{viewModel}
+		{total}
+		{loading}
+		{initialLoad}
+		enableSearch={true}
+		boldedColumns={['name']}
+		perPage={20}
+		searchPlaceholder="Search for a guild name or description"
+	/>
+</div>

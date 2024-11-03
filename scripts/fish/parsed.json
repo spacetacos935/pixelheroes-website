@@ -1,0 +1,2016 @@
+[
+    {
+        "id": 45000,
+        "name": "Yellow Croaker",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 5,
+        "length_max": 20
+    },
+    {
+        "id": 45001,
+        "name": "Sharpbelly",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 3.25,
+        "length_max": 13
+    },
+    {
+        "id": 45002,
+        "name": "Grass Carp",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %"
+        ],
+        "length_min": 1,
+        "length_max": 4
+    },
+    {
+        "id": 45003,
+        "name": "Needlefish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 3.75,
+        "length_max": 15
+    },
+    {
+        "id": 45004,
+        "name": "Goldfish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "DMG against Forest "
+        ],
+        "length_min": 5,
+        "length_max": 20
+    },
+    {
+        "id": 45005,
+        "name": "Clownfish",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "Resi-Ctrl."
+        ],
+        "length_min": 2.75,
+        "length_max": 11
+    },
+    {
+        "id": 45006,
+        "name": "Cowfish",
+        "type": "Small Fish",
+        "attributes": [
+            "CT Rate"
+        ],
+        "length_min": 5,
+        "length_max": 20
+    },
+    {
+        "id": 45007,
+        "name": "Rainbow Shark",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "Darkin DR"
+        ],
+        "length_min": 3,
+        "length_max": 12
+    },
+    {
+        "id": 45008,
+        "name": "Mudskipper",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %"
+        ],
+        "length_min": 5,
+        "length_max": 20
+    },
+    {
+        "id": 45009,
+        "name": "Piranha",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "DMG against Alliance "
+        ],
+        "length_min": 5.75,
+        "length_max": 23
+    },
+    {
+        "id": 45010,
+        "name": "Tilefish",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "Wild DR"
+        ],
+        "length_min": 3.5,
+        "length_max": 14
+    },
+    {
+        "id": 45040,
+        "name": "Guppy",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %"
+        ],
+        "length_min": 3.5,
+        "length_max": 3
+    },
+    {
+        "id": 45041,
+        "name": "Betta Fish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 3.5,
+        "length_max": 16
+    },
+    {
+        "id": 45042,
+        "name": "Black-Spotted Koi",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 3.5,
+        "length_max": 14
+    },
+    {
+        "id": 45043,
+        "name": "Neón Tetra",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 3.5,
+        "length_max": 4
+    },
+    {
+        "id": 45080,
+        "name": "Angelfish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 3.5,
+        "length_max": 4.5
+    },
+    {
+        "id": 45081,
+        "name": "Longfin Tetra",
+        "type": "Small Fish",
+        "attributes": [
+            "M.D. Bonus"
+        ],
+        "length_min": 3.5,
+        "length_max": 12
+    },
+    {
+        "id": 45082,
+        "name": "Stickleback",
+        "type": "Small Fish",
+        "attributes": [
+            "P.D. Bonus"
+        ],
+        "length_min": 3.5,
+        "length_max": 5
+    },
+    {
+        "id": 45083,
+        "name": "Orange Anthias",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %"
+        ],
+        "length_min": 3.5,
+        "length_max": 6
+    },
+    {
+        "id": 45120,
+        "name": "Tuskfish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "CT Rate"
+        ],
+        "length_min": 3.5,
+        "length_max": 20
+    },
+    {
+        "id": 45121,
+        "name": "Pineapplefish",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "Resi-Ctrl."
+        ],
+        "length_min": 3.5,
+        "length_max": 10
+    },
+    {
+        "id": 45122,
+        "name": "Furisole Fish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "Forest DR"
+        ],
+        "length_min": 3.5,
+        "length_max": 18
+    },
+    {
+        "id": 45123,
+        "name": "Four-gilled Bass",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Wild "
+        ],
+        "length_min": 3.5,
+        "length_max": 10
+    },
+    {
+        "id": 45124,
+        "name": "Red Ant Tetra",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Forest "
+        ],
+        "length_min": 2,
+        "length_max": 3
+    },
+    {
+        "id": 45125,
+        "name": "Blue Sapphire Fish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "Forest DR"
+        ],
+        "length_min": 3.5,
+        "length_max": 16
+    },
+    {
+        "id": 45160,
+        "name": "Pipefish",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "P.D. Bonus"
+        ],
+        "length_min": 3.5,
+        "length_max": 10
+    },
+    {
+        "id": 45161,
+        "name": "Rainbow Glass",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "Sanctuary DR"
+        ],
+        "length_min": 3.5,
+        "length_max": 7
+    },
+    {
+        "id": 45162,
+        "name": "Money Fish",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "M.D. Bonus"
+        ],
+        "length_min": 3.5,
+        "length_max": 20
+    },
+    {
+        "id": 45163,
+        "name": "Broadfin Bream",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "M.D. Redu."
+        ],
+        "length_min": 11.5,
+        "length_max": 14
+    },
+    {
+        "id": 45164,
+        "name": "Swordtails",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Alliance "
+        ],
+        "length_min": 3.5,
+        "length_max": 12
+    },
+    {
+        "id": 45165,
+        "name": "Bluegrass Guppy",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "Alliance DR"
+        ],
+        "length_min": 2,
+        "length_max": 6
+    },
+    {
+        "id": 45200,
+        "name": "Bullfish",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "M.D. Bonus"
+        ],
+        "length_min": 3.5,
+        "length_max": 5
+    },
+    {
+        "id": 45201,
+        "name": "Yellowtail Surgeonfish",
+        "type": "Small Fish",
+        "attributes": [
+            "ATK %",
+            "Sanctuary DR"
+        ],
+        "length_min": 3.5,
+        "length_max": 24
+    },
+    {
+        "id": 45202,
+        "name": "Qi's Vice Tanaka Le",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Darkin "
+        ],
+        "length_min": 3.5,
+        "length_max": 15
+    },
+    {
+        "id": 45203,
+        "name": "Lili Fish",
+        "type": "Small Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Darkin "
+        ],
+        "length_min": 3.5,
+        "length_max": 5
+    },
+    {
+        "id": 45300,
+        "name": "Cichlid",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "DMG against Forest "
+        ],
+        "length_min": 10,
+        "length_max": 40
+    },
+    {
+        "id": 45301,
+        "name": "Spotted Grunt",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "Forest DR"
+        ],
+        "length_min": 12.5,
+        "length_max": 50
+    },
+    {
+        "id": 45302,
+        "name": "Parrotfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "Alliance DR"
+        ],
+        "length_min": 8.75,
+        "length_max": 35
+    },
+    {
+        "id": 45303,
+        "name": "Silver Arowana",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 7.5,
+        "length_max": 30
+    },
+    {
+        "id": 45304,
+        "name": "Surgeonfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "Hit Rate"
+        ],
+        "length_min": 7.5,
+        "length_max": 30
+    },
+    {
+        "id": 45305,
+        "name": "Crownfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Wild "
+        ],
+        "length_min": 10,
+        "length_max": 40
+    },
+    {
+        "id": 45306,
+        "name": "Cutlassfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "Hit Rate"
+        ],
+        "length_min": 7.5,
+        "length_max": 30
+    },
+    {
+        "id": 45307,
+        "name": "Blue Snapper",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP"
+        ],
+        "length_min": 12.5,
+        "length_max": 50
+    },
+    {
+        "id": 45308,
+        "name": "Lionfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "Dodge"
+        ],
+        "length_min": 10,
+        "length_max": 40
+    },
+    {
+        "id": 45309,
+        "name": "Bass",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %"
+        ],
+        "length_min": 10,
+        "length_max": 40
+    },
+    {
+        "id": 45310,
+        "name": "Flying Fish",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK",
+            "Sanctuary DR"
+        ],
+        "length_min": 11.25,
+        "length_max": 45
+    },
+    {
+        "id": 45311,
+        "name": "Green Parrotfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK",
+            "DMG against Wild "
+        ],
+        "length_min": 13.75,
+        "length_max": 55
+    },
+    {
+        "id": 45312,
+        "name": "Marlin",
+        "type": "Medium Fish",
+        "attributes": [
+            "Dodge"
+        ],
+        "length_min": 12.5,
+        "length_max": 50
+    },
+    {
+        "id": 45313,
+        "name": "Blobfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP",
+            "DMG against Alliance "
+        ],
+        "length_min": 13.75,
+        "length_max": 55
+    },
+    {
+        "id": 45314,
+        "name": "Rainbow Trout",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP",
+            "DMG against Sanctuary "
+        ],
+        "length_min": 15,
+        "length_max": 60
+    },
+    {
+        "id": 45315,
+        "name": "Buffalo Fish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %"
+        ],
+        "length_min": 15,
+        "length_max": 60
+    },
+    {
+        "id": 45316,
+        "name": "Sailfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Wild "
+        ],
+        "length_min": 10,
+        "length_max": 40
+    },
+    {
+        "id": 45317,
+        "name": "Sailfin Molly",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK",
+            "DMG against Alliance "
+        ],
+        "length_min": 11.5,
+        "length_max": 46
+    },
+    {
+        "id": 45380,
+        "name": "Blue Goby",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 11.5,
+        "length_max": 40
+    },
+    {
+        "id": 45381,
+        "name": "Flowerhorn Cichlid",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 11.5,
+        "length_max": 60
+    },
+    {
+        "id": 45382,
+        "name": "Electric Catfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "Control"
+        ],
+        "length_min": 11.5,
+        "length_max": 30
+    },
+    {
+        "id": 45383,
+        "name": "Redtail Catfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "P.D. Redu."
+        ],
+        "length_min": 11.5,
+        "length_max": 28
+    },
+    {
+        "id": 45384,
+        "name": "Hawksbill Grouper",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 11.5,
+        "length_max": 50
+    },
+    {
+        "id": 45385,
+        "name": "Janitor",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Darkin "
+        ],
+        "length_min": 11.5,
+        "length_max": 30
+    },
+    {
+        "id": 45420,
+        "name": "Flowerhorn Parrotfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "Control"
+        ],
+        "length_min": 11.5,
+        "length_max": 30
+    },
+    {
+        "id": 45421,
+        "name": "Thunder Dragon",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "M.D. Bonus"
+        ],
+        "length_min": 11.5,
+        "length_max": 30
+    },
+    {
+        "id": 45422,
+        "name": "Discus",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "Dodge"
+        ],
+        "length_min": 11.5,
+        "length_max": 28
+    },
+    {
+        "id": 45423,
+        "name": "King Blood Parrot",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK",
+            "P.D. Bonus"
+        ],
+        "length_min": 11.5,
+        "length_max": 40
+    },
+    {
+        "id": 45424,
+        "name": "Panda Goldfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP",
+            "Wild DR"
+        ],
+        "length_min": 11.5,
+        "length_max": 25
+    },
+    {
+        "id": 45425,
+        "name": "Red Dragon Fish",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK",
+            "Forest DR"
+        ],
+        "length_min": 11.5,
+        "length_max": 55
+    },
+    {
+        "id": 45426,
+        "name": "Soldierfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "Hit Rate"
+        ],
+        "length_min": 11.5,
+        "length_max": 24
+    },
+    {
+        "id": 45427,
+        "name": "Long-jawed Trevally",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Wild "
+        ],
+        "length_min": 11.5,
+        "length_max": 48
+    },
+    {
+        "id": 45428,
+        "name": "Three-spotted Catfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "Wild DR"
+        ],
+        "length_min": 11.5,
+        "length_max": 30
+    },
+    {
+        "id": 45460,
+        "name": "Gold Koi",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "Wild DR"
+        ],
+        "length_min": 11.5,
+        "length_max": 50
+    },
+    {
+        "id": 45461,
+        "name": "White Ghost Eel",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "P.D. Redu."
+        ],
+        "length_min": 11.5,
+        "length_max": 50
+    },
+    {
+        "id": 45462,
+        "name": "Blue tuskfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Forest "
+        ],
+        "length_min": 11.5,
+        "length_max": 60
+    },
+    {
+        "id": 45463,
+        "name": "Silver Shark",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Alliance "
+        ],
+        "length_min": 11.5,
+        "length_max": 35
+    },
+    {
+        "id": 45500,
+        "name": "Boxfish",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP",
+            "Resi-Ctrl."
+        ],
+        "length_min": 11.5,
+        "length_max": 24
+    },
+    {
+        "id": 45501,
+        "name": "Bluefish",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "Wild DR"
+        ],
+        "length_min": 11.5,
+        "length_max": 50
+    },
+    {
+        "id": 45502,
+        "name": "Arowana",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Forest "
+        ],
+        "length_min": 11.5,
+        "length_max": 35
+    },
+    {
+        "id": 45503,
+        "name": "Red Snapper",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK %",
+            "Forest DR"
+        ],
+        "length_min": 11.5,
+        "length_max": 60
+    },
+    {
+        "id": 45504,
+        "name": "Crown Three Rooms",
+        "type": "Medium Fish",
+        "attributes": [
+            "HP",
+            "DMG against Wild "
+        ],
+        "length_min": 11.5,
+        "length_max": 45
+    },
+    {
+        "id": 45505,
+        "name": "Silver Arowanas",
+        "type": "Medium Fish",
+        "attributes": [
+            "ATK",
+            "Alliance DR"
+        ],
+        "length_min": 11.5,
+        "length_max": 60
+    },
+    {
+        "id": 45600,
+        "name": "Cod",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "DMG against Sanctuary "
+        ],
+        "length_min": 20,
+        "length_max": 80
+    },
+    {
+        "id": 45601,
+        "name": "Salmon",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "Darkin DR"
+        ],
+        "length_min": 40,
+        "length_max": 160
+    },
+    {
+        "id": 45602,
+        "name": "Toucan",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK"
+        ],
+        "length_min": 20,
+        "length_max": 80
+    },
+    {
+        "id": 45603,
+        "name": "Barracuda",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "DMG against Darkin "
+        ],
+        "length_min": 20,
+        "length_max": 80
+    },
+    {
+        "id": 45604,
+        "name": "Rainbow Fish",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "DMG against Darkin "
+        ],
+        "length_min": 21.5,
+        "length_max": 86
+    },
+    {
+        "id": 45605,
+        "name": "Spathodus",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "DMG against Forest "
+        ],
+        "length_min": 60,
+        "length_max": 240
+    },
+    {
+        "id": 45606,
+        "name": "Fairy Wrasse",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "Resist CT"
+        ],
+        "length_min": 50,
+        "length_max": 200
+    },
+    {
+        "id": 45607,
+        "name": "Oxybone Fish",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "CT Rate"
+        ],
+        "length_min": 27.5,
+        "length_max": 110
+    },
+    {
+        "id": 45608,
+        "name": "Siamese Carp",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "Sanctuary DR"
+        ],
+        "length_min": 75,
+        "length_max": 300
+    },
+    {
+        "id": 45690,
+        "name": "Sturgeon",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK %",
+            "M.D. Redu."
+        ],
+        "length_min": 75,
+        "length_max": 200
+    },
+    {
+        "id": 45691,
+        "name": "Rennecod",
+        "type": "Large Fish",
+        "attributes": [
+            "HP %",
+            "P.D. Redu."
+        ],
+        "length_min": 75,
+        "length_max": 180
+    },
+    {
+        "id": 45692,
+        "name": "Mongolian Fish",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "Wild DR"
+        ],
+        "length_min": 75,
+        "length_max": 270
+    },
+    {
+        "id": 45693,
+        "name": "Catfish",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "DMG against Darkin "
+        ],
+        "length_min": 75,
+        "length_max": 270
+    },
+    {
+        "id": 45694,
+        "name": "Black Carp",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "DMG against Alliance "
+        ],
+        "length_min": 75,
+        "length_max": 120
+    },
+    {
+        "id": 45695,
+        "name": "Big Pencil Fish",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "Alliance DR"
+        ],
+        "length_min": 75,
+        "length_max": 150
+    },
+    {
+        "id": 45720,
+        "name": "Triggerfish",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "M.D. Redu."
+        ],
+        "length_min": 75,
+        "length_max": 80
+    },
+    {
+        "id": 45721,
+        "name": "Bluefin Tuna",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "DMG against Alliance "
+        ],
+        "length_min": 75,
+        "length_max": 400
+    },
+    {
+        "id": 45722,
+        "name": "Whitetip Shark",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK %",
+            "Alliance DR"
+        ],
+        "length_min": 75,
+        "length_max": 200
+    },
+    {
+        "id": 45723,
+        "name": "Mahi-Mahi",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "Alliance DR"
+        ],
+        "length_min": 75,
+        "length_max": 65
+    },
+    {
+        "id": 45724,
+        "name": "Taimen",
+        "type": "Large Fish",
+        "attributes": [
+            "HP %",
+            "Forest DR"
+        ],
+        "length_min": 75,
+        "length_max": 390
+    },
+    {
+        "id": 45725,
+        "name": "Alligator Gar",
+        "type": "Large Fish",
+        "attributes": [
+            "HP %",
+            "DMG against Wild "
+        ],
+        "length_min": 75,
+        "length_max": 180
+    },
+    {
+        "id": 45726,
+        "name": "Acipenser Truncatula",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK %",
+            "Wild DR"
+        ],
+        "length_min": 75,
+        "length_max": 200
+    },
+    {
+        "id": 45750,
+        "name": "Spotted Grouper",
+        "type": "Large Fish",
+        "attributes": [
+            "HP %",
+            "Control"
+        ],
+        "length_min": 75,
+        "length_max": 90
+    },
+    {
+        "id": 45751,
+        "name": "Largemouth Bass",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK",
+            "P.D. Bonus"
+        ],
+        "length_min": 75,
+        "length_max": 80
+    },
+    {
+        "id": 45752,
+        "name": "Paddlefish",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK %",
+            "P.D. Redu."
+        ],
+        "length_min": 75,
+        "length_max": 120
+    },
+    {
+        "id": 45753,
+        "name": "Shark",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "DMG against Sanctuary "
+        ],
+        "length_min": 75,
+        "length_max": 450
+    },
+    {
+        "id": 45754,
+        "name": "Arapaima",
+        "type": "Large Fish",
+        "attributes": [
+            "HP",
+            "DMG against Forest "
+        ],
+        "length_min": 75,
+        "length_max": 300
+    },
+    {
+        "id": 45755,
+        "name": "Acipenser Dabryanus",
+        "type": "Large Fish",
+        "attributes": [
+            "ATK %",
+            "Forest DR"
+        ],
+        "length_min": 75,
+        "length_max": 190
+    },
+    {
+        "id": 45800,
+        "name": "Sea Urchin",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK",
+            "Control"
+        ],
+        "length_min": 1,
+        "length_max": 4
+    },
+    {
+        "id": 45801,
+        "name": "Sea Slug",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP"
+        ],
+        "length_min": 1.5,
+        "length_max": 6
+    },
+    {
+        "id": 45802,
+        "name": "Seahorse",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK %",
+            "Alliance DR"
+        ],
+        "length_min": 7.5,
+        "length_max": 30
+    },
+    {
+        "id": 45803,
+        "name": "Starfish",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP"
+        ],
+        "length_min": 6,
+        "length_max": 24
+    },
+    {
+        "id": 45804,
+        "name": "Hermit Crab",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "Resist CT"
+        ],
+        "length_min": 1.75,
+        "length_max": 7
+    },
+    {
+        "id": 45805,
+        "name": "Jewel Cichlid",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP %",
+            "Wild DR"
+        ],
+        "length_min": 4.5,
+        "length_max": 18
+    },
+    {
+        "id": 45806,
+        "name": "Jellyfish",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK",
+            "Darkin DR"
+        ],
+        "length_min": 5,
+        "length_max": 20
+    },
+    {
+        "id": 45807,
+        "name": "Shrimp",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK"
+        ],
+        "length_min": 3,
+        "length_max": 12
+    },
+    {
+        "id": 45808,
+        "name": "Octopus",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP",
+            "DMG against Sanctuary "
+        ],
+        "length_min": 7.5,
+        "length_max": 30
+    },
+    {
+        "id": 45809,
+        "name": "Fiddler Crab",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 1,
+        "length_max": 4
+    },
+    {
+        "id": 45810,
+        "name": "The Monk Crab",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP %"
+        ],
+        "length_min": 1,
+        "length_max": 2
+    },
+    {
+        "id": 45811,
+        "name": "Horned Snail",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK %"
+        ],
+        "length_min": 1,
+        "length_max": 5
+    },
+    {
+        "id": 45860,
+        "name": "Rabbit Snail",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "M.D. Redu."
+        ],
+        "length_min": 1,
+        "length_max": 7
+    },
+    {
+        "id": 45861,
+        "name": "Black Devil Snail",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "Resi-Ctrl."
+        ],
+        "length_min": 1,
+        "length_max": 4
+    },
+    {
+        "id": 45890,
+        "name": "Freshwater Lobster",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK"
+        ],
+        "length_min": 1,
+        "length_max": 25
+    },
+    {
+        "id": 45891,
+        "name": "Meteor Tower Snail",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP %",
+            "Resist CT"
+        ],
+        "length_min": 1,
+        "length_max": 4
+    },
+    {
+        "id": 45892,
+        "name": "Mantis Shrimp",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK %",
+            "DMG against Wild "
+        ],
+        "length_min": 1,
+        "length_max": 18
+    },
+    {
+        "id": 45893,
+        "name": "Sakura Shrimp",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK %",
+            "Forest DR"
+        ],
+        "length_min": 1,
+        "length_max": 2
+    },
+    {
+        "id": 45920,
+        "name": "Bee Snail",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP %",
+            "Darkin DR"
+        ],
+        "length_min": 1,
+        "length_max": 2.5
+    },
+    {
+        "id": 45921,
+        "name": "Abalone",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP",
+            "Forest DR"
+        ],
+        "length_min": 1,
+        "length_max": 4
+    },
+    {
+        "id": 45922,
+        "name": "Jade Rabbit Snail",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK %",
+            "DMG against Alliance "
+        ],
+        "length_min": 1,
+        "length_max": 3
+    },
+    {
+        "id": 45923,
+        "name": "Hexagonal Dinosaur",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP %",
+            "DMG against Forest "
+        ],
+        "length_min": 1,
+        "length_max": 24
+    },
+    {
+        "id": 45924,
+        "name": "Tiger Frog",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK %",
+            "DMG against Alliance "
+        ],
+        "length_min": 1,
+        "length_max": 12
+    },
+    {
+        "id": 45950,
+        "name": "Harvestman",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP",
+            "Alliance DR"
+        ],
+        "length_min": 1,
+        "length_max": 1.5
+    },
+    {
+        "id": 45951,
+        "name": "Ye Hailong",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK",
+            "Sanctuary DR"
+        ],
+        "length_min": 1,
+        "length_max": 26
+    },
+    {
+        "id": 45952,
+        "name": "Hawksbill",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP %",
+            "Darkin DR"
+        ],
+        "length_min": 1,
+        "length_max": 100
+    },
+    {
+        "id": 45953,
+        "name": "Yangtze Giant Softshell Turtle",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "ATK",
+            "Alliance DR"
+        ],
+        "length_min": 1,
+        "length_max": 60
+    },
+    {
+        "id": 45954,
+        "name": "Peach Blossom Jellyfish",
+        "type": "Aquatic Creatures",
+        "attributes": [
+            "HP",
+            "DMG against Wild "
+        ],
+        "length_min": 1,
+        "length_max": 3
+    },
+    {
+        "id": 46000,
+        "name": "Branches",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46001,
+        "name": "Helmet",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46002,
+        "name": "Red Emerald",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46003,
+        "name": "Broken Shoes",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46004,
+        "name": "Mirror",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46005,
+        "name": "Drift Bottle",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46006,
+        "name": "Lost Grail",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46007,
+        "name": "Wild Pearl",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46008,
+        "name": "Blessing Necklace",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46009,
+        "name": "Opened Chest",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 2.5,
+        "length_max": 0
+    },
+    {
+        "id": 46040,
+        "name": "Broken Sword",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46041,
+        "name": "Water Plants",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46042,
+        "name": "Bones",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46043,
+        "name": "Seashell",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46044,
+        "name": "Bad Orange",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46045,
+        "name": "Portable Flask",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46046,
+        "name": "Empty Can",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46047,
+        "name": "Mushroom",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46048,
+        "name": "Bell",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46049,
+        "name": "Salty Fish",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46050,
+        "name": "Candle Holder",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46080,
+        "name": "Coral",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46081,
+        "name": "Clay Pot",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46082,
+        "name": "Odd Stone",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46083,
+        "name": "Compass",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46084,
+        "name": "Tattered Treasure Map",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46120,
+        "name": "Underwear",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46121,
+        "name": "Ghost Mask",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46122,
+        "name": "Bracelet",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46160,
+        "name": "Gold Bar",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46161,
+        "name": "Key of Time",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46162,
+        "name": "Death Note",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46163,
+        "name": "Shattered Magic Lamp",
+        "type": "MISC items",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46300,
+        "name": "Treasure Map·Beginning Island",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46301,
+        "name": "Treasure Map·Giant Whale",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46302,
+        "name": "Treasure Map·Desert Kingdom",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46303,
+        "name": "Treasure Map·Sky Island",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46304,
+        "name": "Treasure Map·Justice Island",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46305,
+        "name": "Treasure Map·Fog Island",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46306,
+        "name": "Treasure Map·Mermaid Island",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46307,
+        "name": "Treasure Map·Elephant Island",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46308,
+        "name": "Treasure Map·Treasure Land ",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46309,
+        "name": "Iron Axe",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46310,
+        "name": "Silver Axe",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46311,
+        "name": "Golden Axe",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46312,
+        "name": "Heart of Ocean",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46313,
+        "name": "Sea Dragon Ball",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46314,
+        "name": "Coral Reef Gem",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46315,
+        "name": "Pearl Necklace",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46316,
+        "name": "Seastar Bracelet",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46317,
+        "name": "Coral Earrings",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46318,
+        "name": "Magical Conch",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46319,
+        "name": "Pearl Shell",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46320,
+        "name": "Crystal Seahorse",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46321,
+        "name": "Imperial Turtle Shell",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46322,
+        "name": "Ghost Snake Bones",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46323,
+        "name": "Giant Shark Tooth",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46324,
+        "name": "Pirate Eye Patch",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46325,
+        "name": "Pirate Hook Hand",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46326,
+        "name": "Pirate Treasure Chest",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46327,
+        "name": "Giant Clam",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46328,
+        "name": "Black Coral",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46329,
+        "name": "Aquamarine",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46330,
+        "name": "Copper Coin",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46331,
+        "name": "Silver Coin",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46332,
+        "name": "Gold Coins",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46333,
+        "name": "Night Pearl",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46334,
+        "name": "Jade Fish",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46335,
+        "name": "Agate",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46336,
+        "name": "Copper Ingot",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46337,
+        "name": "Silver ingot",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    },
+    {
+        "id": 46338,
+        "name": "Gold Ingot",
+        "type": "Collections",
+        "attributes": [],
+        "length_min": 0,
+        "length_max": 0
+    }
+]
