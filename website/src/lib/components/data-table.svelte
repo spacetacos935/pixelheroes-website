@@ -101,10 +101,10 @@
 {#if enableSearch}
 	<div class="relative mt-6 w-full">
 		<div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-			<Search class="text-muted-foreground h-5 w-5" />
+			<Search class="text-muted-foreground h-5 w-5 dark:text-neutral-400" />
 		</div>
 		<Input
-			class="bg-background h-11 rounded-lg border-gray-300 pl-10 text-base shadow-sm md:w-[200px] lg:w-full"
+			class="bg-background dark:bg-input h-11 rounded-lg border-gray-300 pl-10 text-base shadow-sm md:w-[200px] lg:w-full dark:border-neutral-700/80 dark:text-neutral-200 dark:ring-neutral-400"
 			type="text"
 			placeholder={searchPlaceholder}
 			autocomplete="off"
@@ -117,16 +117,18 @@
 <div class="relative {$$restProps.class || ''}">
 	{#if loading}
 		<div
-			class="absolute inset-0 z-50 mt-[48px] flex flex-col items-center justify-center bg-gray-50 bg-opacity-50"
+			class="absolute inset-0 z-50 mt-[48px] flex flex-col items-center justify-center bg-gray-50/50 dark:mt-[65px] dark:bg-neutral-800/80"
 		>
-			<LoaderCircle class="text-primary h-12 w-12 animate-spin" />
+			<LoaderCircle class="text-primary h-12 w-12 animate-spin dark:text-neutral-200" />
 		</div>
 	{:else if $total === 0}
 		<div
-			class="absolute inset-0 z-50 mt-[48px] flex flex-col items-center justify-center bg-gray-50 bg-opacity-50"
+			class="absolute inset-0 z-50 mt-[48px] flex flex-col items-center justify-center bg-gray-50/50 dark:mt-[65px] dark:bg-neutral-800/80"
 		>
-			<p class="text-xl font-semibold text-black">No Results Found</p>
-			<p class="mt-1 font-medium text-gray-600">Your search didn't match any entries</p>
+			<p class="text-xl font-semibold text-black dark:text-neutral-100">No Results Found</p>
+			<p class="mt-1 font-medium text-gray-600 dark:text-neutral-400">
+				Your search didn't match any entries
+			</p>
 		</div>
 	{/if}
 
@@ -134,15 +136,14 @@
 
 	<div
 		bind:this={tableContainer}
-		class="mt-4 rounded-md border border-gray-300 bg-white shadow-sm"
+		class="dark:bg-card mt-4 overflow-auto rounded-md border border-gray-300 bg-white shadow-sm dark:border-neutral-700/80"
 		class:select-none={showBlur}
-		class:overflow-auto={showBlur || !shouldStick}
 	>
 		<Table.Root {...$tableAttrs}>
 			<Table.Header class="w-[90rem]">
 				{#each $headerRows as headerRow}
 					<Subscribe rowAttrs={headerRow.attrs()}>
-						<Table.Row class="bg-muted hover:bg-muted {headerClass}">
+						<Table.Row class="bg-muted hover:bg-muted dark:bg-neutral-700/40 {headerClass}">
 							{#each headerRow.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs let:props props={cell.props()}>
 									<Table.Head {...attrs}>
@@ -189,21 +190,23 @@
 													/></svg
 												>
 											</Button> -->
-											<div class="font-semibold text-black">
+											<div class="font-semibold text-black dark:text-neutral-100">
 												<Render of={cell.render()} />
 											</div>
 											<Button
-												class="ml-auto p-0"
+												class="ml-auto p-0 dark:hover:bg-transparent"
 												variant="ghost"
 												disabled={loading}
 												on:click={props.sort.toggle}
 											>
 												{#if props.sort.order === 'desc'}
-													<ArrowDownWideNarrow class="text-primary h-4 w-4" />
+													<ArrowDownWideNarrow class="text-primary h-4 w-4 dark:text-sky-500" />
 												{:else if props.sort.order === 'asc'}
-													<ArrowUpNarrowWide class="text-primary h-4 w-4" />
+													<ArrowUpNarrowWide class="text-primary h-4 w-4 dark:text-sky-500" />
 												{:else}
-													<ArrowUpDown class="h-4 w-4" />
+													<ArrowUpDown
+														class="h-4 w-4 dark:text-neutral-500 dark:hover:text-neutral-300"
+													/>
 												{/if}
 											</Button>
 										</div>
@@ -218,12 +221,12 @@
 			<Table.Body class={`${showBlur && 'blur-sm'}`} {...$tableBodyAttrs}>
 				{#each $pageRows as row (row.id)}
 					<Subscribe rowAttrs={row.attrs()} let:rowAttrs>
-						<Table.Row {...rowAttrs}>
+						<Table.Row class="dark:border-neutral-700/80 dark:hover:bg-neutral-800" {...rowAttrs}>
 							{#each row.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs>
 									<Table.Cell {...attrs}>
 										<div
-											class="whitespace-pre-wrap"
+											class="whitespace-pre-wrap dark:text-neutral-300"
 											class:font-semibold={boldedColumns.includes(cell.id)}
 										>
 											<Render of={cell.render()} />
@@ -241,7 +244,7 @@
 
 {#if initialLoad && $total > 0}
 	<div class="flex flex-col items-center justify-between gap-y-4 py-4 md:flex-row">
-		<p class="text-muted-foreground text-sm font-medium">
+		<p class="text-muted-foreground text-sm font-medium dark:font-normal dark:text-neutral-400">
 			Showing entries {(($pageIndex - 1) * 20 + 1).toLocaleString('en-US')} to
 			{(($pageIndex - 1) * 20 + 21).toLocaleString('en-US')} out of
 			{$total.toLocaleString('en-US')} total
@@ -257,7 +260,9 @@
 		>
 			<Pagination.Content class="gap-[initial] md:gap-1">
 				<Pagination.Item>
-					<Pagination.PrevButton />
+					<Pagination.PrevButton
+						class="dark:bg-background dark:text-neutral-100 dark:hover:bg-neutral-800"
+					/>
 				</Pagination.Item>
 				{#each pages as page (page.key)}
 					{@const isCurrent = $pageIndex === page.value}
@@ -269,7 +274,7 @@
 					{:else}
 						<Pagination.Item isVisible={isCurrent}>
 							<Pagination.Link
-								class="w-fit px-4"
+								class="dark:data-[selected]:bg-card w-fit px-4 dark:border-neutral-700/80 dark:text-neutral-100 dark:hover:bg-neutral-800"
 								{page}
 								isActive={isCurrent}
 								on:click={() => ($pageIndex = page.value)}
@@ -280,7 +285,9 @@
 					{/if}
 				{/each}
 				<Pagination.Item>
-					<Pagination.NextButton />
+					<Pagination.NextButton
+						class="dark:bg-background dark:text-neutral-100 dark:hover:bg-neutral-800"
+					/>
 				</Pagination.Item>
 			</Pagination.Content>
 		</Pagination.Root>

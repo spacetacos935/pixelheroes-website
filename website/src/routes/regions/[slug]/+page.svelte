@@ -7,8 +7,6 @@
 		type SortKey
 	} from 'svelte-headless-table/plugins';
 
-	import CircleAlert from 'lucide-svelte/icons/circle-alert';
-
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -17,8 +15,8 @@
 	import type { Views } from '$lib/supabase';
 	import { convertServerId, debounce } from '$lib/utils';
 
+	import Alert from '$lib/components/alert.svelte';
 	import DataTable from '$lib/components/data-table.svelte';
-	import * as Alert from '$lib/components/ui/alert';
 	import * as Card from '$lib/components/ui/card';
 	import * as Tabs from '$lib/components/ui/tabs/index.js';
 
@@ -270,31 +268,27 @@
 </script>
 
 <div>
-	<h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900">
+	<h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">
 		{region.code === 'NA' ? '🌎' : '🌍'}
 		{region.name}
 		({region.code})
 	</h1>
-	<p class="text-muted-foreground mt-1 max-w-4xl text-base">
+	<p class="text-muted-foreground mt-1 max-w-4xl text-base dark:text-neutral-400">
 		Statistics are computed per guild, server, and cluster. This data is updated every day at reset.
 	</p>
 
-	<Alert.Root class="my-8 border-blue-200 bg-blue-100">
-		<CircleAlert class="h-4 w-4 !text-blue-800" />
-		<Alert.Title class="font-semibold tracking-normal text-blue-700">
-			Activity Calculation
-		</Alert.Title>
-		<Alert.Description class="text-blue-700">
-			Activity is based on a player's weekly guild contribution. This is then summed up per guild,
-			server, and cluster. Each cluster consists of 5 servers starting from 1.
-		</Alert.Description>
-	</Alert.Root>
+	<Alert
+		title="Activity Calculation"
+		description="Activity is based on a player's weekly guild contribution. This is then summed up per guild, server, and cluster. Each cluster consists of 5 servers starting from 1."
+	/>
 </div>
 
 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-primary text-base font-medium">Most Active Server</Card.Title>
+			<Card.Title class="text-primary text-base font-medium dark:text-sky-400">
+				Most Active Server
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if serverStats.mostActive}
@@ -307,15 +301,17 @@
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
 	</Card.Root>
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-base font-medium text-red-600">Least Active Server</Card.Title>
+			<Card.Title class="text-base font-medium text-red-500 dark:text-red-400">
+				Least Active Server
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if serverStats.leastActive}
@@ -328,15 +324,17 @@
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
 	</Card.Root>
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-primary text-base font-medium">Most Active Cluster</Card.Title>
+			<Card.Title class="text-primary text-base font-medium dark:text-sky-400">
+				Most Active Cluster
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if clusterStats.mostActive}
@@ -352,15 +350,17 @@
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
 	</Card.Root>
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-base font-medium text-red-600">Least Active Cluster</Card.Title>
+			<Card.Title class="text-base font-medium text-red-500 dark:text-red-400">
+				Least Active Cluster
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if clusterStats.leastActive}
@@ -374,25 +374,28 @@
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
 	</Card.Root>
 </div>
 
-<Tabs.Root bind:value={$tab} class="mb-2 mt-6 rounded-md border border-gray-300 shadow-sm">
-	<Tabs.List class="grid h-11 w-full grid-cols-2">
+<Tabs.Root
+	bind:value={$tab}
+	class="mb-2 mt-6 rounded-md border border-gray-300 shadow-sm dark:border-neutral-700/80"
+>
+	<Tabs.List class="dark:bg-card grid h-11 w-full grid-cols-2">
 		<Tabs.Trigger
-			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:font-medium data-[state=active]:text-white"
+			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:font-medium data-[state=active]:text-white dark:data-[state=active]:bg-neutral-100 dark:data-[state=active]:text-black"
 			value="Clusters"
 			disabled={!initialLoad}
 		>
 			Clusters
 		</Tabs.Trigger>
 		<Tabs.Trigger
-			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:text-white"
+			class="data-[state=active]:bg-primary disabled text-base data-[state=active]:font-medium data-[state=active]:text-white dark:data-[state=active]:bg-neutral-100 dark:data-[state=active]:text-black"
 			value="Servers"
 			disabled={!initialLoad}
 		>

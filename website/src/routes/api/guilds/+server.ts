@@ -12,7 +12,8 @@ const columns = [
 	'level',
 	'experience',
 	'power',
-	'totalMembers'
+	'totalMembers',
+	'contributions'
 ];
 
 export const GET: RequestHandler = async ({ url }) => {

@@ -7,8 +7,6 @@
 		type SortKey
 	} from 'svelte-headless-table/plugins';
 
-	import CircleAlert from 'lucide-svelte/icons/circle-alert';
-
 	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
 
@@ -16,8 +14,8 @@
 	import type { Views } from '$lib/supabase';
 	import { convertServerId, debounce } from '$lib/utils';
 
+	import Alert from '$lib/components/alert.svelte';
 	import DataTable from '$lib/components/data-table.svelte';
-	import * as Alert from '$lib/components/ui/alert';
 	import * as Card from '$lib/components/ui/card';
 
 	titleStore.set('Guilds');
@@ -206,33 +204,30 @@
 </script>
 
 <div>
-	<h1 class="text-3xl font-bold leading-tight tracking-tight text-gray-900">🏰 Guilds</h1>
-	<p class="text-muted-foreground mt-1 max-w-4xl text-base">
-		A list of all guilds and their members. This data is updated every day at reset.
+	<h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">🏰 Guilds</h1>
+	<p class="text-muted-foreground mt-1 max-w-4xl text-base dark:text-neutral-400">
+		A list of all guilds. This data is updated every day at reset.
 	</p>
 
-	<Alert.Root class="my-8 border-blue-200 bg-blue-100">
-		<CircleAlert class="h-4 w-4 !text-blue-800" />
-		<Alert.Title class="font-semibold tracking-normal text-blue-700">
-			Limited Data Available
-		</Alert.Title>
-		<Alert.Description class="text-blue-700">
-			This data currently only includes North America and Europe. SEA will be added in the future.
-		</Alert.Description>
-	</Alert.Root>
+	<Alert
+		title="Limited Data Available"
+		description="This data currently only includes North America and Europe. SEA will be added in the future."
+	/>
 </div>
 
 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-primary text-base font-medium">Total Guilds</Card.Title>
+			<Card.Title class="text-primary text-base font-medium dark:text-sky-400">
+				Total Guilds
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if stats.total && stats.totalRegions}
-				<div class="text-2xl font-bold">
+				<div class="text-2xl font-bold dark:text-neutral-100">
 					{stats.total.toLocaleString('en-US')} Guilds
 				</div>
-				<p class="text-muted-foreground mt-1 text-sm font-medium">
+				<p class="text-muted-foreground mt-1 text-sm font-medium dark:text-neutral-400">
 					{#each stats.totalRegions as item, index}
 						{#if index > 0}
 							&nbsp;&#x2022;
@@ -242,74 +237,80 @@
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
 	</Card.Root>
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-base font-medium text-purple-500">Most Active</Card.Title>
+			<Card.Title class="text-base font-medium text-purple-500 dark:text-violet-400">
+				Most Active
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if stats.topContributions}
-				<div class="text-2xl font-bold">
+				<div class="text-2xl font-bold dark:text-neutral-100">
 					{stats.topContributions.region}-{convertServerId(
 						stats.topContributions.region,
 						stats.topContributions.serverId
 					)}
 					{stats.topContributions.name}
 				</div>
-				<p class="text-muted-foreground mt-1 text-sm font-medium">
+				<p class="text-muted-foreground mt-1 text-sm font-medium dark:text-neutral-400">
 					Contributions: {stats.topContributions.contributions.toLocaleString('en-US')}
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
 	</Card.Root>
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-base font-medium text-red-500">Most Powerful</Card.Title>
+			<Card.Title class="text-base font-medium text-red-500 dark:text-red-400">
+				Most Powerful
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if stats.topPower}
-				<div class="text-2xl font-bold">
+				<div class="text-2xl font-bold dark:text-neutral-100">
 					{stats.topPower.region}-{convertServerId(stats.topPower.region, stats.topPower.serverId)}
 					{stats.topPower.name}
 				</div>
-				<p class="text-muted-foreground mt-1 text-sm font-medium">
+				<p class="text-muted-foreground mt-1 text-sm font-medium dark:text-neutral-400">
 					Power: {stats.topPower.power.toLocaleString('en-US')}
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
 	</Card.Root>
-	<Card.Root class="border-gray-300">
+	<Card.Root class="border-gray-300 dark:border-neutral-700/80">
 		<Card.Header class="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-			<Card.Title class="text-base font-medium text-green-600">Highest Level</Card.Title>
+			<Card.Title class="text-base font-medium text-green-600 dark:text-emerald-500">
+				Highest Level
+			</Card.Title>
 		</Card.Header>
 		<Card.Content class="p-4 pt-0">
 			{#if stats.topLevel}
-				<div class="text-2xl font-bold">
+				<div class="text-2xl font-bold dark:text-neutral-100">
 					{stats.topLevel.region}-{convertServerId(stats.topLevel.region, stats.topLevel.serverId)}
 					{stats.topLevel.name}
 				</div>
-				<p class="text-muted-foreground mt-1 text-sm font-medium">
+				<p class="text-muted-foreground mt-1 text-sm font-medium dark:text-neutral-400">
 					Level: {stats.topLevel.level.toLocaleString('en-US')}
 				</p>
 			{:else}
 				<div class="animate-pulse">
-					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200" />
-					<div class="mt-4 h-2 w-12 rounded bg-slate-200" />
+					<div class="mt-2 h-2.5 w-32 rounded bg-slate-200 dark:bg-neutral-700" />
+					<div class="mt-4 h-2 w-12 rounded bg-slate-200 dark:bg-neutral-700" />
 				</div>
 			{/if}
 		</Card.Content>
