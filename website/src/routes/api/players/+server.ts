@@ -66,7 +66,9 @@ export const GET: RequestHandler = async ({ url }) => {
 					if (value[0]) {
 						countQuery.gte(key, value[0]);
 						fetchQuery.gte(key, value[0]);
-					} else if (value[1]) {
+					}
+
+					if (value[1]) {
 						countQuery.gte(key, value[1]);
 						fetchQuery.lte(key, value[1]);
 					}
