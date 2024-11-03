@@ -125,10 +125,12 @@
 			<Table.Header class="w-[90rem]">
 				{#each $headerRows as headerRow}
 					<Subscribe rowAttrs={headerRow.attrs()}>
-						<Table.Row class="bg-muted hover:bg-muted dark:bg-neutral-700/40">
+						<Table.Row
+							class="bg-muted hover:bg-muted dark:border-neutral-700/80 dark:bg-neutral-700/40"
+						>
 							{#each headerRow.cells as cell (cell.id)}
 								<Subscribe attrs={cell.attrs()} let:attrs let:props props={cell.props()}>
-									<Table.Head {...attrs}>
+									<Table.Head class="dark:border-neutral-700/80" {...attrs}>
 										<div class="flex items-center">
 											<!-- <Popover.Root>
 												<Popover.Trigger class="mr-2">
