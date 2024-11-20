@@ -230,7 +230,7 @@
 			filterValue.subscribe(() => {
 				$pageIndex = 1;
 				$sortKeys = defaultSortyKeys;
-				initialLoad = false;
+				// initialLoad = false;
 
 				debouncedScroll();
 				debounced();
