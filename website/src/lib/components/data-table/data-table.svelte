@@ -65,7 +65,7 @@
 			autocomplete="off"
 			maxlength={50}
 			bind:value={$filterValue}
-			disabled={loading}
+			disabled={initialLoad}
 		/>
 	</div>
 {/if}
@@ -79,7 +79,7 @@
 					{title}
 					{options}
 					{initialValues}
-					disabled={loading}
+					disabled={initialLoad}
 				/>
 			{:else}
 				<DataTableRangeFilter
@@ -90,7 +90,7 @@
 					bind:filterValues={$filterValues[column]}
 					{title}
 					{initialValues}
-					disabled={loading}
+					disabled={initialLoad}
 				/>
 			{/if}
 		{/each}
