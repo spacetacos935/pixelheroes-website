@@ -380,7 +380,7 @@
 		enableSearch={true}
 		boldedColumns={['name']}
 		perPage={20}
-		searchPlaceholder="Filter player or guild name"
+		searchPlaceholder="Search for a guild name or description"
 		{filters}
 	/>
 </div>
