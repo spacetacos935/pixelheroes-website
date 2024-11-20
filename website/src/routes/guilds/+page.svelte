@@ -46,7 +46,7 @@
 
 	const table = createTable(guilds, {
 		hide: addHiddenColumns({
-			initialHiddenColumnIds: ['region']
+			initialHiddenColumnIds: ['region', 'serverPowerRank']
 		}),
 		filter: addTableFilter({
 			fn: ({ filterValue, value }) => value.toLowerCase().includes(filterValue.toLowerCase()),
@@ -75,6 +75,11 @@
 		table.column({
 			accessor: 'globalPowerRank',
 			header: 'Global Rank',
+			cell: ({ value }) => value.toLocaleString('en-US')
+		}),
+		table.column({
+			accessor: 'serverPowerRank',
+			header: 'Server Rank',
 			cell: ({ value }) => value.toLocaleString('en-US')
 		}),
 		table.column({
@@ -125,6 +130,7 @@
 	const { filterValues } = pluginStates.colFilter as {
 		filterValues: Writable<Record<string, any[]>>;
 	};
+	const { hiddenColumnIds } = pluginStates.hide;
 
 	let loading = true;
 	let initialLoad = false;
@@ -150,6 +156,12 @@
 		);
 		if (Object.keys(filter).length > 0) {
 			params.append('filters', JSON.stringify(filter));
+
+			if (filter.region.length === 1) {
+				$hiddenColumnIds = ['region', 'globalPowerRank'];
+			} else {
+				$hiddenColumnIds = ['region', 'serverPowerRank'];
+			}
 		}
 
 		const resp = await fetch(`/api/guilds?${params.toString()}`);
