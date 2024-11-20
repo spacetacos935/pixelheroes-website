@@ -6,6 +6,7 @@ import type { RequestHandler } from './$types';
 
 const columns = [
 	'globalPowerRank',
+	'serverPowerRank',
 	'serverId',
 	'name',
 	'notice',
