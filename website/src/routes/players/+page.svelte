@@ -370,7 +370,7 @@
 					</Button>
 				</Tooltip.Trigger>
 				<Tooltip.Content class="dark:border-neutral-700/80 dark:bg-neutral-900">
-					<p class="dark:text-neutral-100">Players with more than 0 guild weekly contributions</p>
+					<p class="dark:text-neutral-100">Players that have logged in the past 2 days</p>
 				</Tooltip.Content>
 			</Tooltip.Root>
 		</Card.Header>

@@ -279,7 +279,7 @@
 
 	<Alert
 		title="Activity Calculation"
-		description="Activity is based on a player's weekly guild contribution. This is then summed up per guild, server, and cluster. Each cluster consists of 5 servers starting from 1."
+		description="Activity is based on the number of players, belonging to a guild, that have logged in for the past 2 days."
 	/>
 </div>
 
